@@ -1,0 +1,582 @@
+================================================================================
+        EMPLOYEE LEAVE MANAGEMENT SYSTEM (LMS)
+        Project Documentation & User Guide
+================================================================================
+
+PROJECT OVERVIEW & DESCRIPTION
+================================================================================
+
+The Employee Leave Management System is a complete web-based application that 
+allows employees to apply for leaves and enables administrators to manage and 
+approve/reject leave requests. The system prevents overlapping leave applications 
+automatically.
+
+KEY FEATURES:
+  ✓ Employee leave applications with multiple types (Sick, Personal, Vacation)
+  ✓ Admin approval/rejection workflow with remarks capability
+  ✓ Automatic prevention of overlapping leave applications
+  ✓ Beautiful, responsive user interface with Bootstrap 5
+  ✓ Role-based access control (Employee/Admin)
+  ✓ Complete RESTful API for integrations
+  ✓ Professional UI theme with gradient colors and smooth animations
+  ✓ Database backup and sample data included
+  ✓ Mobile-friendly design
+  ✓ Form validation and error handling
+
+TECHNOLOGY STACK:
+  • Framework: Laravel 11
+  • Database: MySQL
+  • Frontend: Bootstrap 5, Custom CSS, Font Awesome Icons
+  • PHP Version: 8.2+
+  • API: RESTful with Sanctum authentication
+
+PROJECT STRUCTURE:
+  • app/Models/ - Database models (User, Leave)
+  • app/Http/Controllers/ - Business logic (LeaveController, AuthController)
+  • app/Http/Middleware/ - Authentication middleware (AdminMiddleware)
+  • database/migrations/ - Database schema
+  • database/seeders/ - Sample data
+  • resources/views/ - User interface templates
+  • routes/ - API and web routes
+  • database_export.sql - Complete database backup
+
+
+================================================================================
+STEP-BY-STEP GUIDE FOR END USERS
+================================================================================
+
+STEP 1: START THE APPLICATION SERVER
+================================================================================
+
+1. Open Command Prompt or PowerShell
+2. Navigate to the project folder:
+   Command: cd d:\xamp\htdocs\LMS_Sweta_Practical
+
+3. Start the Laravel development server:
+   Command: php artisan serve
+
+4. You should see output like:
+   "Laravel development server started on http://127.0.0.1:8000"
+
+5. Keep this window open (do NOT close it)
+
+
+STEP 2: OPEN IN BROWSER
+================================================================================
+
+1. Open your web browser (Chrome, Firefox, Edge, etc.)
+2. Go to this URL: http://127.0.0.1:8000
+3. OR use: http://localhost:8000
+4. You will see the Login Page
+
+
+STEP 3: LOGIN TO THE SYSTEM
+================================================================================
+
+The system has sample accounts for testing. You can login as either an Admin 
+or an Employee.
+
+LOGIN CREDENTIALS:
+---
+
+ADMIN ACCOUNT (Full Access):
+  Email: admin@lms.com
+  Password: password123
+
+EMPLOYEE ACCOUNTS (Limited Access):
+  Email: john@lms.com
+  Password: password123
+  Department: IT
+
+  Email: jane@lms.com
+  Password: password123
+  Department: HR
+
+  Email: mike@lms.com
+  Password: password123
+  Department: Finance
+
+STEPS TO LOGIN:
+1. You will see a beautiful login page
+2. Enter your email in the "Email Address" field
+3. Enter your password in the "Password" field
+4. Click the "Login" button
+5. Wait for the page to load (2-3 seconds)
+6. You will see the Leave Management Dashboard
+
+
+STEP 4: FOR EMPLOYEES - APPLY FOR LEAVE
+================================================================================
+
+After logging in with an EMPLOYEE account, follow these steps:
+
+1. You will see the Leave Management Dashboard with:
+   - Summary cards showing Pending, Approved, and Rejected leaves count
+   - A table with all your leave requests
+   - "Apply for Leave" button at the top right
+
+2. Click "Apply for Leave" button (top right corner)
+
+3. You will see the Leave Application Form with these fields:
+   - Leave Type: Choose from (Sick Leave, Personal Leave, Vacation, Other)
+   - Start Date: Click and pick your leave start date
+   - End Date: Click and pick your leave end date
+   - Reason: Write why you need the leave (minimum 10 characters)
+
+4. Important: The system automatically calculates the number of days
+
+5. Fill all fields with valid information:
+   Example:
+   - Leave Type: Vacation
+   - Start Date: 2026-09-05
+   - End Date: 2026-09-08
+   - Reason: Family vacation to visit relatives
+
+6. Click "Submit Application" button
+
+7. SUCCESS! Your leave request will be submitted with PENDING status
+
+8. You will see a success message: "Leave application submitted successfully!"
+
+9. You can now see your application in the leaves list with "Pending" badge
+
+
+STEP 5: FOR EMPLOYEES - EDIT YOUR PENDING LEAVE
+================================================================================
+
+To modify a leave application that is still PENDING:
+
+1. Go to "My Leaves" page (click "My Leaves" in navigation)
+
+2. Find your pending leave request (status shows "Pending" badge)
+
+3. Click the "Edit" button (pencil icon) for that leave
+
+4. Modify any field (dates, type, reason)
+
+5. Click "Update Request" button
+
+6. Your changes will be saved
+
+NOTE: You can ONLY edit leaves with PENDING status. Once approved or rejected, 
+you cannot modify them.
+
+
+STEP 6: FOR EMPLOYEES - DELETE YOUR PENDING LEAVE
+================================================================================
+
+To delete a leave application that is still PENDING:
+
+1. Go to "My Leaves" page
+
+2. Find your pending leave request
+
+3. Click the "Delete" button (trash icon)
+
+4. Confirm the deletion when asked
+
+5. Your leave request will be permanently deleted
+
+NOTE: You can ONLY delete leaves with PENDING status.
+
+
+STEP 7: FOR EMPLOYEES - VIEW LEAVE DETAILS
+================================================================================
+
+To view full details of any leave request:
+
+1. Go to "My Leaves" page
+
+2. Click the "View" button (eye icon) on any leave
+
+3. You will see complete information:
+   - Employee name and email
+   - Leave type with badge
+   - Start and end dates
+   - Total number of days
+   - Reason for leave
+   - Current status (Pending/Approved/Rejected)
+   - Admin's remarks (if rejected)
+   - Who approved/rejected and when
+
+4. Click "Back to Leaves" to return to the list
+
+
+STEP 8: FOR ADMINS - VIEW ALL LEAVE REQUESTS
+================================================================================
+
+After logging in with ADMIN account:
+
+1. You will see the Leave Management Dashboard with:
+   - All employee leave requests (not just your own)
+   - Summary cards showing Pending, Approved, Rejected counts
+   - Complete leave table with employee details
+
+2. The table shows:
+   - Employee name and email
+   - Leave type
+   - Date range (Start to End)
+   - Number of days
+   - Current status (Pending/Approved/Rejected)
+   - Quick action buttons
+
+3. You can scroll through the list and see all applications
+
+
+STEP 9: FOR ADMINS - APPROVE A LEAVE REQUEST
+================================================================================
+
+To approve an employee's leave request:
+
+1. Go to "My Leaves" page
+
+2. Look for leaves with "Pending" status badge (yellow/orange)
+
+3. Click on the leave you want to approve
+
+4. You will see full details including:
+   - Employee information
+   - Leave dates and reason
+   - "Admin Actions" section at the bottom
+
+5. In the "Admin Actions" section, click "Approve Leave" button (green)
+
+6. SUCCESS! The leave status changes to "Approved" (green badge)
+
+7. The employee's name is recorded as the approver
+
+8. The approval date and time are recorded
+
+
+STEP 10: FOR ADMINS - REJECT A LEAVE REQUEST
+================================================================================
+
+To reject an employee's leave request:
+
+1. Go to "My Leaves" page
+
+2. Find the pending leave you want to reject
+
+3. Click on the leave to view details
+
+4. In the "Admin Actions" section, click "Reject Leave" button (red)
+
+5. A popup modal will appear with:
+   - Title "Reject Leave Request"
+   - Text field for "Remarks (Required)"
+
+6. Write your reason for rejection in the remarks field:
+   Example: "Cannot approve due to insufficient notice period. 
+            Please reapply with 10 days advance notice."
+
+7. Click "Reject" button in the modal
+
+8. SUCCESS! The leave status changes to "Rejected" (red badge)
+
+9. Your name is recorded as who rejected it
+
+10. The employee will see your remarks when viewing the leave
+
+
+STEP 11: FOR ADMINS - FILTER AND SEARCH
+================================================================================
+
+Current features available:
+
+1. View all leaves for all employees
+
+2. Employees can only see their own leaves
+
+3. Pagination: If there are many leaves, they are split into pages
+   - Use page numbers at the bottom to navigate
+
+4. Status indicators: Quickly see which leaves are Pending/Approved/Rejected
+   - Yellow badge = Pending
+   - Green badge = Approved
+   - Red badge = Rejected
+
+
+STEP 12: OVERLAPPING LEAVE PREVENTION (AUTOMATIC)
+================================================================================
+
+The system automatically prevents overlapping leave applications:
+
+EXAMPLE:
+- If you already have approved leave from Aug 5-10
+- And you try to apply for Aug 8-12
+- System will show error: "You already have a leave request for these dates."
+
+SCENARIOS BLOCKED:
+  ✓ Leave starts during an existing leave
+  ✓ Leave ends during an existing leave
+  ✓ Leave completely covers an existing leave
+  ✓ Leave partially overlaps with existing leave
+
+SCENARIOS ALLOWED:
+  ✓ Leaves separated by at least 1 day (Aug 5-8 and Aug 9-12)
+  ✓ Rejected leaves don't block new applications
+  ✓ You can re-apply for different dates after rejection
+
+HOW IT WORKS:
+1. When you fill the form, just submit it
+2. System automatically checks for conflicts
+3. If conflict found, you see error message
+4. Choose different dates and try again
+
+
+STEP 13: LOGOUT FROM THE SYSTEM
+================================================================================
+
+To logout and end your session:
+
+1. Look at the top right corner of the page
+
+2. Click on your name (shows "Welcome, John Doe" or similar)
+
+3. A dropdown menu appears
+
+4. Click "Logout" option
+
+5. You will be logged out and redirected to login page
+
+6. Your session is now ended
+
+
+STEP 14: STOP THE SERVER
+================================================================================
+
+When you are done using the application:
+
+1. Go to the Command Prompt/PowerShell window where you started the server
+
+2. Press Ctrl + C (hold Ctrl and press C)
+
+3. Type "Y" and press Enter to confirm
+
+4. The server will stop
+
+5. You can now close the command prompt window
+
+
+TROUBLESHOOTING & COMMON ISSUES
+================================================================================
+
+ISSUE: "Route [login] not defined" error
+SOLUTION: Refresh the browser or clear cache (Ctrl + Shift + Delete)
+
+ISSUE: Cannot login with credentials
+SOLUTION: Check that you're using the exact email and password provided above
+
+ISSUE: "Overlapping leave" error when applying
+SOLUTION: Choose different dates that don't conflict with existing leaves
+
+ISSUE: Cannot edit or delete approved/rejected leaves
+SOLUTION: This is by design - only PENDING leaves can be modified
+
+ISSUE: Server shows "Connection refused"
+SOLUTION: Make sure you started the server with "php artisan serve"
+
+ISSUE: Blank page or slow loading
+SOLUTION: Refresh the browser or wait a few seconds for page to load
+
+ISSUE: Database errors
+SOLUTION: Make sure MySQL server is running (start XAMPP MySQL)
+
+
+KEY FEATURES SUMMARY
+================================================================================
+
+FOR EMPLOYEES:
+  ✓ Apply for leave with multiple types
+  ✓ View all your leave requests
+  ✓ Edit pending leave applications
+  ✓ Delete pending leave applications
+  ✓ See status of each request (Pending/Approved/Rejected)
+  ✓ View admin's remarks on rejected leaves
+  ✓ Automatic overlap prevention
+  ✓ Beautiful dashboard with summary cards
+
+FOR ADMINS:
+  ✓ View all employee leave requests
+  ✓ See complete employee information
+  ✓ Approve leave applications
+  ✓ Reject with remarks
+  ✓ See pending requests count
+  ✓ See approved requests count
+  ✓ See rejected requests count
+  ✓ Full visibility into all applications
+
+
+USER INTERFACE HIGHLIGHTS
+================================================================================
+
+DESIGN FEATURES:
+  • Modern blue gradient theme (#2563eb)
+  • Smooth animations and hover effects
+  • Color-coded status badges
+  • Responsive Bootstrap 5 design
+  • Professional card-based layout
+  • Mobile-friendly interface
+  • Font Awesome icons
+  • Clear typography
+
+NAVIGATION:
+  • Easy-to-use navbar at top
+  • Quick action buttons
+  • Clear error/success messages
+  • Helpful tips section
+  • Pagination for large lists
+
+
+API ENDPOINTS (For Developers)
+================================================================================
+
+BASE URL: http://127.0.0.1:8000/api
+
+AUTHENTICATION: Use Bearer tokens (Bearer token required in header)
+
+AVAILABLE ENDPOINTS:
+
+GET /api/health
+  - Health check endpoint (no auth required)
+
+GET /api/leaves
+  - Get current user's leaves
+
+POST /api/leaves
+  - Create new leave
+  - Body: { start_date, end_date, type, reason }
+
+GET /api/admin/leaves
+  - Get all leaves (admin only)
+
+GET /api/admin/leaves/pending
+  - Get pending leaves (admin only)
+
+POST /api/admin/leaves/{id}/approve
+  - Approve a leave (admin only)
+
+POST /api/admin/leaves/{id}/reject
+  - Reject a leave (admin only)
+  - Body: { remarks }
+
+
+DATABASE INFORMATION
+================================================================================
+
+DATABASE NAME: lms_sweta_practical
+
+KEY TABLES:
+  • users - Employee and admin accounts
+  • leaves - All leave applications
+  • migrations - Database version tracking
+  • sessions - User session data
+  • (and others for internal Laravel use)
+
+BACKUP: 
+  • database_export.sql file contains complete database backup
+  • See DATABASE_SETUP.md for import instructions
+
+
+SUPPORT & DOCUMENTATION
+================================================================================
+
+INCLUDED DOCUMENTATION FILES:
+
+1. README.md
+   - General project information
+
+2. QUICK_START.md
+   - Quick overview and testing scenarios
+
+3. LEAVE_MANAGEMENT_GUIDE.md
+   - Complete API and feature documentation
+
+4. DATABASE_SETUP.md
+   - Database setup and structure information
+
+5. This file (USER_GUIDE.txt)
+   - Step-by-step end-user instructions
+
+
+================================================================================
+                              WEBSITE URL
+================================================================================
+
+LOCAL DEVELOPMENT URL:
+  http://127.0.0.1:8000
+  OR
+  http://localhost:8000
+
+After starting the server with: php artisan serve
+
+PAGES AVAILABLE:
+  • Login: http://127.0.0.1:8000/login
+  • Leaves: http://127.0.0.1:8000/leaves
+  • Create Leave: http://127.0.0.1:8000/leaves/create
+  • API Health: http://127.0.0.1:8000/api/health
+
+================================================================================
+                          QUICK REFERENCE GUIDE
+================================================================================
+
+START APPLICATION:
+  1. cd d:\xamp\htdocs\LMS_Sweta_Practical
+  2. php artisan serve
+  3. Open http://127.0.0.1:8000
+
+LOGIN ACCOUNTS:
+  Admin: admin@lms.com / password123
+  Employee: john@lms.com / password123
+            jane@lms.com / password123
+            mike@lms.com / password123
+
+EMPLOYEE WORKFLOW:
+  1. Login with employee account
+  2. Click "Apply for Leave"
+  3. Fill form and submit
+  4. View status in "My Leaves"
+  5. Edit if pending
+  6. Wait for admin approval
+
+ADMIN WORKFLOW:
+  1. Login with admin account
+  2. Go to "My Leaves" to see all requests
+  3. Click on pending leave
+  4. Click "Approve" or "Reject"
+  5. If rejecting, add remarks
+
+LOGOUT:
+  Click your name → Click Logout
+
+STOP SERVER:
+  Press Ctrl + C in the terminal
+
+
+================================================================================
+                              VERSION INFO
+================================================================================
+
+Project: Employee Leave Management System v1.0
+Framework: Laravel 11
+Database: MySQL
+PHP Version: 8.2+
+Last Updated: August 18, 2026
+Status: Production Ready
+
+
+================================================================================
+                              END OF GUIDE
+================================================================================
+
+For more detailed information, please refer to the other documentation files:
+- QUICK_START.md
+- LEAVE_MANAGEMENT_GUIDE.md
+- DATABASE_SETUP.md
+
+For technical support or issues, ensure all prerequisites are met and 
+follow the troubleshooting section above.
+
+Thank you for using the Employee Leave Management System!
+
+================================================================================

@@ -1,66 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Employee Leave Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Overview
 
-## About Laravel
+A complete web-based application for managing employee leave requests. Employees can apply for leaves, admins can approve/reject them, and the system automatically prevents overlapping applications.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Key Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- ✅ Employee leave applications (Sick, Personal, Vacation, Other)
+- ✅ Admin approval/rejection workflow
+- ✅ Automatic overlapping leave prevention
+- ✅ Beautiful responsive UI (Bootstrap 5)
+- ✅ Role-based access control
+- ✅ RESTful API
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Quick Start
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Step 1: Start the Server
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+cd d:\xamp\htdocs\LMS_Sweta_Practical
+php artisan serve
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Keep this terminal open. Server runs at: **http://127.0.0.1:8000**
 
-## Laravel Sponsors
+### Step 2: Open in Browser
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Go to: **http://127.0.0.1:8000**
 
-### Premium Partners
+### Step 3: Login
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Use these credentials:
 
-## Contributing
+**ADMIN Account:**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Email: `admin@lms.com`
+- Password: `password123`
 
-## Code of Conduct
+**EMPLOYEE Accounts:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Email: `john@lms.com` | Password: `password123`
+- Email: `jane@lms.com` | Password: `password123`
+- Email: `mike@lms.com` | Password: `password123`
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## How to Use
 
-## License
+### For Employees
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Login** with your employee email
+2. **Apply for Leave** → Click "Apply for Leave" button
+    - Select leave type
+    - Choose start & end dates
+    - Write reason (min 10 characters)
+    - Click "Submit"
+3. **View Leaves** → Go to "My Leaves"
+    - See status (Pending/Approved/Rejected)
+    - Edit pending leaves
+    - Delete pending leaves
+4. **Logout** → Click your name → Logout
+
+### For Admins
+
+1. **Login** with admin email
+2. **View All Leaves** → Go to "My Leaves"
+    - See all employee requests
+3. **Approve Leave** → Click on pending leave → Click "Approve"
+4. **Reject Leave** → Click on pending leave → Click "Reject" → Add remarks
+5. **Logout** → Click your name → Logout
+
+---
+
+## Overlapping Leave Prevention
+
+System automatically prevents overlapping leaves:
+
+- ❌ Cannot apply for dates that already have leave
+- ✅ Can apply for adjacent dates (e.g., Aug 5-8, then Aug 9-12)
+- ✅ Rejected leaves don't block new applications
+
+Example: If you have leave Aug 5-10, you cannot apply for Aug 8-12 (overlap detected).
+
+---
+
+## Technology Stack
+
+- **Framework**: Laravel 11
+- **Database**: MySQL
+- **Frontend**: Bootstrap 5, CSS, JavaScript
+- **PHP**: 8.2+
+
+---
+
+## Database
+
+**Sample Data Included:**
+
+- 1 Admin account
+- 3 Employee accounts
+- Sample leave requests
+
+**Database File**: `database_export.sql` (included in project)
+
+---
+
+## URLs
+
+| Page        | URL                                 |
+| ----------- | ----------------------------------- |
+| Home/Login  | http://127.0.0.1:8000               |
+| My Leaves   | http://127.0.0.1:8000/leaves        |
+| Apply Leave | http://127.0.0.1:8000/leaves/create |
+| API Health  | http://127.0.0.1:8000/api/health    |
+
+---
+
+## Documentation
+
+- **USER_GUIDE.txt** → Complete step-by-step guide
+- **QUICK_START.md** → Quick overview
+- **LEAVE_MANAGEMENT_GUIDE.md** → API documentation
+- **DATABASE_SETUP.md** → Database setup
+
+---
+
+## Troubleshooting
+
+| Issue                      | Solution                               |
+| -------------------------- | -------------------------------------- |
+| Cannot login               | Check email & password from login page |
+| "Overlapping leave" error  | Choose different dates                 |
+| Cannot edit approved leave | Only pending leaves can be edited      |
+| Server won't start         | Ensure MySQL is running (XAMPP)        |
+| Blank page                 | Refresh browser or wait 3 seconds      |
+
+---
+
+## Stop the Server
+
+Press **Ctrl + C** in the terminal where you started the server.
+
+---
+
+## GitHub Repository
+
+https://github.com/Sweta-64/lms-sweta-practical
+
+---
+
+**Version**: 1.0 | **Status**: Production Ready | **Last Updated**: August 18, 2026

@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeaveController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->check()) {
+        return redirect()->route('leaves.index');
+    }
+    return redirect()->route('login');
 });
 
 // Authenticated routes

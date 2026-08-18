@@ -1,0 +1,445 @@
+================================================================================
+                   TASK REVIEW - SHARING GUIDE
+            How to Share This Project with Your Reviewer
+================================================================================
+
+OPTION 1: SHARE VIA GITHUB (RECOMMENDED)
+================================================================================
+
+STEP 1: Send GitHub Repository Link
+---
+Share this URL with your reviewer:
+  👉 https://github.com/Sweta-64/lms-sweta-practical
+
+STEP 2: What They Should Do
+---
+1. Go to the link above
+2. Click "Code" button (green)
+3. Click "Download ZIP" OR clone the repository
+4. Extract the ZIP file (if downloaded)
+5. Open in VS Code or their preferred editor
+
+STEP 3: Reviewer Setup on Their Computer
+---
+They need to:
+
+1. Open Command Prompt/PowerShell
+2. Navigate to project folder:
+   cd path/to/LMS_Sweta_Practical
+
+3. Start the server:
+   php artisan serve
+
+4. Open browser:
+   http://127.0.0.1:8000
+
+5. Login and test the application
+
+---
+
+OPTION 2: SHARE VIA EMAIL (SIMPLE)
+================================================================================
+
+1. Download project as ZIP:
+   - Go to GitHub repository
+   - Click "Code" → "Download ZIP"
+   - Save the file
+
+2. Attach to email and send
+
+3. Reviewer extracts ZIP and follows Option 1, Step 3
+
+---
+
+OPTION 3: SHARE VIA CLOUD STORAGE
+================================================================================
+
+Upload to: Google Drive, OneDrive, Dropbox, etc.
+1. Create a folder
+2. Upload entire project folder
+3. Share the link with reviewer
+4. They download and follow setup steps
+
+---
+
+WHAT TO SHARE - CHECKLIST
+================================================================================
+
+✓ Send GitHub Repository Link (MUST):
+  👉 https://github.com/Sweta-64/lms-sweta-practical
+
+✓ Send These 3 Credentials (for testing):
+  
+  Admin Account:
+    Email: admin@lms.com
+    Password: password123
+
+  Employee Accounts:
+    Email: john@lms.com / jane@lms.com / mike@lms.com
+    Password: password123
+
+✓ Send Quick Start Instructions:
+  1. php artisan serve
+  2. Go to http://127.0.0.1:8000
+  3. Login with above credentials
+  4. Test the application
+
+✓ Optional - Send KEY FILES to Review:
+
+  ARCHITECTURE & LOGIC:
+  - app/Models/Leave.php (Overlapping prevention logic)
+  - app/Http/Controllers/LeaveController.php (Business logic)
+  - app/Http/Middleware/AdminMiddleware.php (Authorization)
+
+  DATABASE:
+  - database/migrations/ (Schema files)
+  - database/seeders/UserSeeder.php (Sample data)
+
+  ROUTES:
+  - routes/web.php (Web routes)
+  - routes/api.php (API routes)
+
+  UI/VIEWS:
+  - resources/views/leaves/ (Leave management pages)
+  - resources/views/auth/login.blade.php (Login page)
+  - resources/views/layouts/app.blade.php (Main layout with theme)
+
+---
+
+WHAT REVIEWER SHOULD CHECK
+================================================================================
+
+FUNCTIONALITY:
+  ✓ Login works with provided credentials
+  ✓ Employee can apply for leave
+  ✓ Admin can approve/reject leaves
+  ✓ Overlapping prevention works
+  ✓ Can edit pending leaves
+  ✓ Can delete pending leaves
+  ✓ Cannot edit approved/rejected leaves
+  ✓ Logout works
+  ✓ Error messages display correctly
+
+USER INTERFACE:
+  ✓ Login page looks professional
+  ✓ Dashboard displays correctly
+  ✓ All buttons are clickable
+  ✓ Forms validate properly
+  ✓ Colors and design are consistent
+  ✓ Responsive on mobile/tablet
+  ✓ Tables display correctly
+  ✓ Badges show correct status
+
+CODE QUALITY:
+  ✓ Code is readable and clean
+  ✓ Comments are helpful
+  ✓ Variable names are clear
+  ✓ No unnecessary complexity
+  ✓ Proper error handling
+  ✓ Database relationships work
+
+DATABASE:
+  ✓ Tables are properly structured
+  ✓ Foreign keys work
+  ✓ Sample data is included
+  ✓ Can export database
+
+DOCUMENTATION:
+  ✓ README.md is clear
+  ✓ USER_GUIDE.txt has step-by-step instructions
+  ✓ Database setup documented
+  ✓ All features are explained
+
+---
+
+SAMPLE MESSAGE TO SEND TO REVIEWER
+================================================================================
+
+Subject: Task Review - Employee Leave Management System
+
+Hi [Reviewer Name],
+
+I have completed the Employee Leave Management System task. Please review it 
+using the details below:
+
+GITHUB REPOSITORY:
+https://github.com/Sweta-64/lms-sweta-practical
+
+QUICK START:
+1. Download/clone the repository
+2. Run: php artisan serve
+3. Visit: http://127.0.0.1:8000
+4. Login with credentials below
+
+TEST ACCOUNTS:
+- Admin: admin@lms.com / password123
+- Employee 1: john@lms.com / password123
+- Employee 2: jane@lms.com / password123
+- Employee 3: mike@lms.com / password123
+
+KEY FEATURES IMPLEMENTED:
+✓ Employee leave application
+✓ Admin approval/rejection workflow
+✓ Automatic overlapping prevention
+✓ Beautiful responsive UI (Bootstrap 5)
+✓ Role-based access control
+✓ RESTful API endpoints
+✓ Database with sample data
+✓ Comprehensive documentation
+
+DOCUMENTATION:
+- README.md - Project overview
+- USER_GUIDE.txt - Step-by-step instructions
+- QUICK_START.md - Quick reference
+- LEAVE_MANAGEMENT_GUIDE.md - API documentation
+- DATABASE_SETUP.md - Database setup
+
+Please let me know if you have any questions or need clarification on any part.
+
+Thank you,
+[Your Name]
+
+---
+
+KEY FOLDERS & FILES TO HIGHLIGHT
+================================================================================
+
+BACKEND LOGIC:
+  📁 app/
+     ├── Models/
+     │   ├── User.php (User model with relationships)
+     │   └── Leave.php (Leave model with overlap prevention logic) ⭐
+     ├── Http/
+     │   ├── Controllers/
+     │   │   ├── LeaveController.php (Main business logic) ⭐
+     │   │   └── AuthController.php (Login/logout)
+     │   └── Middleware/
+     │       └── AdminMiddleware.php (Authorization check)
+
+DATABASE:
+  📁 database/
+     ├── migrations/ (Schema files)
+     ├── seeders/
+     │   └── UserSeeder.php (Sample data)
+     └── migrations/
+         ├── *_create_leaves_table.php (Leaves table schema)
+         └── *_add_role_to_users_table.php (User roles)
+
+FRONTEND UI:
+  📁 resources/views/
+     ├── layouts/
+     │   └── app.blade.php (Main theme & styling) ⭐
+     ├── auth/
+     │   └── login.blade.php (Beautiful login page) ⭐
+     └── leaves/
+         ├── index.blade.php (Dashboard)
+         ├── create.blade.php (Apply form)
+         ├── edit.blade.php (Edit form)
+         └── show.blade.php (Details view)
+
+ROUTES:
+  📄 routes/web.php (Web routes)
+  📄 routes/api.php (API routes)
+
+DOCUMENTATION:
+  📄 README.md (Quick overview)
+  📄 USER_GUIDE.txt (Complete guide)
+  📄 QUICK_START.md (Quick reference)
+  📄 DATABASE_SETUP.md (Database info)
+  📄 database_export.sql (Database backup)
+
+⭐ = Most important files to review
+
+---
+
+TESTING SCENARIOS FOR REVIEWER
+================================================================================
+
+SCENARIO 1: Employee Workflow
+---
+1. Login as john@lms.com
+2. Click "Apply for Leave"
+3. Fill form:
+   - Type: Vacation
+   - Start: Any future date
+   - End: 3 days later
+   - Reason: "Family vacation"
+4. Submit and verify success message
+5. See leave in "My Leaves" with PENDING status
+6. Edit the leave (change dates)
+7. Verify changes saved
+8. Try to apply again for same dates → Should see error
+
+SCENARIO 2: Overlapping Prevention
+---
+1. Employee already has leave Aug 5-10
+2. Try to apply for Aug 7-12
+3. System should show: "You already have a leave request for these dates"
+4. Change dates to Aug 11-15 and apply successfully
+
+SCENARIO 3: Admin Workflow
+---
+1. Login as admin@lms.com
+2. Go to "My Leaves" to see all employee requests
+3. Click on PENDING leave
+4. Click "Approve Leave"
+5. Verify status changes to APPROVED
+6. Click on another pending leave
+7. Click "Reject Leave"
+8. Add remark: "Insufficient notice"
+9. Verify status changes to REJECTED with remark
+
+SCENARIO 4: Role-Based Access
+---
+1. Login as employee
+2. Cannot see "Approve" button (only admins can)
+3. Logout and login as admin
+4. Can see and use approve/reject buttons
+
+---
+
+REQUIREMENTS FOR REVIEWER
+================================================================================
+
+SYSTEM REQUIREMENTS:
+  • Windows, Mac, or Linux
+  • PHP 8.2 or higher
+  • MySQL database
+  • Git (optional, for cloning)
+  • Modern web browser
+
+SOFTWARE NEEDED:
+  • VS Code (for code review)
+  • XAMPP or similar (for MySQL)
+  • Web browser (Chrome, Firefox, Edge)
+
+TIME TO SETUP:
+  • Download: 2-3 minutes
+  • Setup & test: 5-10 minutes
+  • Total review: 15-30 minutes
+
+---
+
+COMMON QUESTIONS FOR REVIEWER
+================================================================================
+
+Q: How do I start the application?
+A: Run "php artisan serve" and open http://127.0.0.1:8000
+
+Q: What are the login credentials?
+A: See "TEST ACCOUNTS" section above
+
+Q: How do I check the database?
+A: Use phpMyAdmin (http://localhost/phpmyadmin)
+   Database name: lms_sweta_practical
+
+Q: How do I understand the overlapping prevention logic?
+A: See app/Models/Leave.php → hasOverlappingLeave() method
+   Also check LEAVE_MANAGEMENT_GUIDE.md for detailed explanation
+
+Q: Where is the UI code?
+A: resources/views/ folder contains all Blade templates
+
+Q: How do I check routes?
+A: See routes/web.php for web routes
+   See routes/api.php for API routes
+
+Q: What to do if I encounter errors?
+A: Check database connection in .env file
+   Ensure MySQL is running
+   Check PHP version (must be 8.2+)
+
+---
+
+CHECKLIST FOR YOU (Before Sending)
+================================================================================
+
+Before sharing the project, ensure:
+
+✓ GitHub repository is public
+✓ Database is exported (database_export.sql)
+✓ README.md is updated with quick start
+✓ Sample data is seeded in database
+✓ All features working on your machine
+✓ No sensitive information in .env
+✓ All files are committed to Git
+✓ All documentation is complete
+✓ Test login with all credentials
+✓ Verify overlapping prevention works
+✓ Check that both Employee and Admin workflows work
+✓ Confirm responsive design on mobile
+
+---
+
+AFTER REVIEWER CHECKS
+================================================================================
+
+Once review is complete, you can:
+
+1. Ask for feedback on specific areas
+2. Request to check code quality
+3. Ask if UI meets requirements
+4. Ask for suggestions on improvements
+5. Request sign-off/approval for submission
+
+---
+
+IMPORTANT REMINDERS
+================================================================================
+
+✓ Make sure GitHub repository is PUBLIC
+✓ Send complete credentials for testing
+✓ Include step-by-step setup instructions
+✓ Highlight key features and technical aspects
+✓ Provide clear documentation links
+✓ Test everything locally before sending
+✓ Be ready to explain overlapping prevention logic
+✓ Mention it's a "Practical Task" (not production)
+✓ Include your name and contact info
+✓ Ask for specific feedback points
+
+---
+
+QUICK SHARE TEMPLATE
+================================================================================
+
+Use this template to quickly share your project:
+
+---
+
+Hi [Reviewer],
+
+Please review my Leave Management System task:
+
+📂 GitHub: https://github.com/Sweta-64/lms-sweta-practical
+
+🚀 To run:
+   1. php artisan serve
+   2. http://127.0.0.1:8000
+
+🔐 Login:
+   Admin: admin@lms.com / password123
+   Employee: john@lms.com / password123
+
+📋 Features:
+   ✓ Employee leave application
+   ✓ Admin approval/rejection
+   ✓ Overlapping prevention
+   ✓ Beautiful UI
+   ✓ Complete documentation
+
+📚 Docs: README.md, USER_GUIDE.txt, QUICK_START.md
+
+Questions? I'm here to help!
+
+---
+
+Thank you!
+
+---
+
+================================================================================
+                              END OF GUIDE
+================================================================================
+
+Print this guide or send to your reviewer for reference!
